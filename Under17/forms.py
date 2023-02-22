@@ -1,6 +1,5 @@
 from django import forms
 from .models import Squadra, Calciatore
-from django.contrib import messages
     
 class SquadraForm(forms.ModelForm):
 
