@@ -20,7 +20,7 @@
           
             <th scope="row">{{forloop.counter}}</th>
             <td><img src="{{ squadra.logo_squadra.url }}" style="width:40px;height:auto;"></td>
-            <td>{{ squadra.nome_squadra }}</td>
+            <td>{{ squadra.nome_squadra|capfirst }}</td> <!-- capfirst per rendere la prima lettera maiuscola -->
             <td>
                 <a href="{% url 'Under17:squadra_detail' squadra.id %}"><i class="bi bi-info-square text-success" data-toggle='tooltip' title='dettagli' 
                 {% if user.is_authenticated %}
