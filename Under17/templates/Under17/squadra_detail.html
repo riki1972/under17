@@ -1,0 +1,74 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+
+<section id="content" class="container" style="padding: 3px;">
+    <br/><br/>
+    <h1>ALLIEVI REGIONALI U17</h1>
+    <h3>
+    <table class="table table-dark table-striped align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Logo</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr>
+                <td><img src="{{ squadra.logo_squadra.url }}" style="width:40px;height:auto;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-dark table-striped align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr>
+                <td>{{ object.nome_squadra }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-dark table-striped align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Indirizzo</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr>
+                <td>{{ object.indirizzo }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-dark table-striped align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Google Maps</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr>
+                <td><a href="{{ object.mappa }}" target="_blank">visualizza la mappa</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-dark table-striped align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Orario partite casalinghe</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr>
+                <td>{{ object.orario_partita_di_casa }}</td>
+            </tr>
+        </tbody>
+    </table>
+</h3>
+<a href="{% url 'Under17:squadre_all' %}"><button class="btn btn-success">Torna alla lista Squadre</button></a>
+<br/><br/>
+</section>
+
+
+{% endblock content %}

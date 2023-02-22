@@ -1,0 +1,28 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+{% load static %}
+
+<section id="content" class="container">
+
+    <br/><br/>
+    <h1 class="text-center align-middle"><img src="{% static 'images/desenzano.png' %}" alt="Bootstrap" width="70" height="70"></h1>
+    <h1 class="text-center">Allievi Under 17 Desenzano</h1>
+    <h2 class="text-center text-danger">Campionato Regionale 2022/2023</h2>
+    <br/>
+    <h1 class="text-center align-middle"><img src="{% static 'images/foto_u17.jpg' %}" alt="Bootstrap" width="100%" height="auto" class="ombra"></h1>
+    <br/>
+    <div class="selezione-scelta">
+        {% if user.is_authenticated %}
+        <div class="p-2 d-flex justify-content-center text-center link-image" style="background:#38b6ff;"><a href=""><img src="{% static 'images/convocazioni.png' %}" alt="Bootstrap" width="70" height="70"><br>CONVOCAZIONI</a></div>
+        {% else %}
+        <div class="p-2 d-flex justify-content-center text-center link-image" style="background:#38b6ff;color:white;"><a><img src="{% static 'images/touch.png' %}" alt="Bootstrap" width="70" height="70"><br>SCEGLI UNA SEZIONE</a></div>
+        {% endif %}
+        <div class="p-2 d-flex justify-content-center text-center link-image" style="background:#38b6ff;"><a href=""><img src="{% static 'images/calendar.png' %}" alt="Bootstrap" width="70" height="70"><br>CALENDARIO</a></div>
+        <div class="p-2 d-flex justify-content-center text-center link-image" style="background:#38b6ff;"><a href="{% url 'Under17:calciatori_all' %}"><img src="{% static 'images/players.png' %}" alt="Bootstrap" width="70" height="70"><br>CALCIATORI</a></div>
+        <div class="p-2 d-flex justify-content-center text-center link-image" style="background:#38b6ff;"><a href="{% url 'Under17:squadre_all' %}"><img src="{% static 'images/badge.png' %}" alt="Bootstrap" width="70" height="70"><br>SQUADRE DEL GIRONE</a></div>
+    </div>    
+
+</section>
+
+{% endblock content %}

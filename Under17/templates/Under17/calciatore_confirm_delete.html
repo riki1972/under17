@@ -1,0 +1,29 @@
+{% extends 'base_generic.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+<section id="content" class="container">
+    <br/><br/>
+    <h3 class="text-danger">ELIMINA SQUADRA</h3>
+    
+            <div class="container">
+                <div class="row my-5">
+                    <div class="col-md-12">
+                        <form method="post" class="form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            <h3>Sei sicuro di voler eliminare il calciatore <b>{{ object.cognome_calciatore }} {{ object.nome_calciatore }}</b>?
+                            <br><br>
+                            <button type="submit" class="btn btn-danger">Elimina</button>
+                            <a href="{% url 'Under17:calciatori_all' %}"><button type="button" class="btn btn-warning">Annulla</button></a>
+                            </h3>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    
+    <br/><br/>
+</section>
+
+{% endblock content %}

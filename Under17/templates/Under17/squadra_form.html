@@ -1,0 +1,26 @@
+{% extends 'base_generic.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+<section id="content" class="container">
+    <br/><br/>
+    <h1>INSERISCI I DATI DELLA SQUADRA</h1>
+    
+            <div class="container">
+                <div class="row my-5">
+                    <div class="col-md-12">
+                        <form method="post" class="form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            <button type="submit" class="btn btn-primary">Invia i dati</button>
+                            <a href="{% url 'Under17:squadre_all' %}"><button type="button" class="btn btn-warning">Annulla</button></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    
+    <br/><br/>
+</section>
+
+{% endblock content %}

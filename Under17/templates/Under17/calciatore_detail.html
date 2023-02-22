@@ -1,0 +1,74 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+
+<section id="content" class="container" style="padding: 3px;">
+    <br/><br/>
+    <h1>ALLIEVI REGIONALI U17</h1>
+    <h3>
+    <table class="table table-dark table-striped align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Immagine</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr>
+                <td><img src="{{ calciatore.immagine_calciatore.url }}" style="width:100px;height:auto;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-dark table-striped align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Cognome</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr>
+                <td>{{ object.cognome_calciatore }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-dark table-striped align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr>
+                <td>{{ object.nome_calciatore }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-dark table-striped align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Ruolo</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr>
+                <td>{{ object.get_ruolo_display }}</td> <!-- con object.ruolo vedrei solamente una Lettera ad es. D , con get_(il nome che ho inserito per la scelta)_display abbiamo tutta la descrizione della scelta -->
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-dark table-striped align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Data di Nascita</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr>
+                <td>{{ object.data_di_nascita }}</td>
+            </tr>
+        </tbody>
+    </table>
+</h3>
+<a href="{% url 'Under17:calciatori_all' %}"><button class="btn btn-success">Torna alla rosa dei calciatori</button></a>
+<br/><br/>
+</section>
+
+
+{% endblock content %}
