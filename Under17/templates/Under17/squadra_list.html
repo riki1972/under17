@@ -22,12 +22,12 @@
             <td><img src="{{ squadra.logo_squadra.url }}" style="width:40px;height:auto;"></td>
             <td>{{ squadra.nome_squadra|capfirst }}</td> <!-- capfirst per rendere la prima lettera maiuscola -->
             <td>
-                <a href="{% url 'Under17:squadra_detail' squadra.id %}" class="p-3" style="font-size: 30px"><i class="bi bi-info-square text-success" data-toggle='tooltip' title='dettagli' 
+                <a href="{% url 'Under17:squadra_detail' squadra.id %}" class="p-1" style="font-size: 30px"><i class="bi bi-info-square text-success" data-toggle='tooltip' title='dettagli' 
                     id='example'></i></div></a>&nbsp;
                 {% if user.is_authenticated %}
-                <a href="{% url 'Under17:squadra_update' squadra.id %}" class="p-3" style="font-size: 30px"><i class="bi bi-gear text-light" data-toggle='tooltip' title='modifica' 
+                <a href="{% url 'Under17:squadra_update' squadra.id %}" class="p-1" style="font-size: 30px"><i class="bi bi-gear text-light" data-toggle='tooltip' title='modifica' 
                     id='example'></i></a>&nbsp;
-                <a href="{% url 'Under17:squadra_delete' squadra.id %}" class="p-3" style="font-size: 30px"><i class="bi bi-trash3 text-danger" data-toggle='tooltip' title='elimina' 
+                <a href="{% url 'Under17:squadra_delete' squadra.id %}" class="p-1" style="font-size: 30px"><i class="bi bi-trash3 text-danger" data-toggle='tooltip' title='elimina' 
                     id='example'></i></a>
                 {% endif %}
             </td> 
