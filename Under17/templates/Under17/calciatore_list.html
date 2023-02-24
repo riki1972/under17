@@ -13,7 +13,10 @@
             <th scope="col">Nome</th>
             <th scope="col">R</th>
             <th scope="col">Età</th>
+            {% if user.is_authenticated %}
+            {% else %}
             <th scope="col"></th>
+            {% endif %}
         </tr>
       </thead>
       <tbody class="">
@@ -25,16 +28,23 @@
             <td>{{ calciatore.cognome_calciatore|capfirst }} {{ calciatore.nome_calciatore|first|capfirst }}.</td>
             <td>{{ calciatore.ruolo }}</td>
             <td>{{ calciatore.data_di_nascita|date:'Y' }}</td> <!-- niente estensione |date: per giorno mese anno con il mese scritto in lettere ... questo invece per le altre opzioni |date:'Y-m-d H:i'-->
-            <td>
-                <a href="{% url 'Under17:calciatore_detail' calciatore.id %}"><i class="bi bi-info-square text-success" data-toggle='tooltip' title='dettagli' 
-                {% if user.is_authenticated %}
-                    id='example'></i></div></a>&nbsp;
-                <a href="{% url 'Under17:calciatore_update' calciatore.id %}"><i class="bi bi-gear text-light" data-toggle='tooltip' title='modifica' 
-                    id='example'></i></a>&nbsp;
-                <a href="{% url 'Under17:calciatore_delete' calciatore.id %}"><i class="bi bi-trash3 text-danger" data-toggle='tooltip' title='elimina' 
-                    id='example'></i></a>
-                {% endif %}
-            </td> 
+            {% if user.is_authenticated %}
+            <tr>
+                <td colspan="5" class="text-center">
+                    <a href="{% url 'Under17:calciatore_detail' calciatore.id %}" class="p-3" style="font-size: 30px"><i class="bi bi-info-square text-success" data-toggle='tooltip' title='dettagli' 
+                        id='example'></i></div></a>&nbsp;
+                    <a href="{% url 'Under17:calciatore_update' calciatore.id %}" class="p-3" style="font-size: 30px"><i class="bi bi-gear text-light" data-toggle='tooltip' title='modifica' 
+                        id='example'></i></a>&nbsp;
+                    <a href="{% url 'Under17:calciatore_delete' calciatore.id %}" class="p-3" style="font-size: 30px"><i class="bi bi-trash3 text-danger" data-toggle='tooltip' title='elimina' 
+                        id='example'></i></a>
+                </td> 
+            </tr>  
+            {% else %}
+                <td>
+                    <a href="{% url 'Under17:calciatore_detail' calciatore.id %}" style="font-size: 30px"><i class="bi bi-info-square text-success" data-toggle='tooltip' title='dettagli' 
+                        id='example'></i></div></a>
+                </td>
+            {% endif %}
         </tr>
         {% endfor %}
         
