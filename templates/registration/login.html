@@ -1,0 +1,28 @@
+{% extends 'base_generic.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+{% load static %}
+
+<section id="content" class="container">
+
+    <br/><br/>
+    <h1 class="text-center align-middle"><img src="{% static 'images/desenzano.png' %}" alt="Bootstrap" width="70" height="70"></h1>
+    <h1 class="text-center">LOGIN</h1>
+    <br/>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-12">
+                <form method="post" class="form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <a href="{% url 'Under17:calciatori_all' %}"><button type="button" class="btn btn-warning">Annulla</button></a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock content %}

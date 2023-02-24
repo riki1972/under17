@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeView.as_view(), name="index"),
     path('', include('Under17.urls')),
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
 
 from django.conf import settings

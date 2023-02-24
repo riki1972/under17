@@ -83,11 +83,11 @@
                     {% endif %}
                     {% if user.is_authenticated %}
                     <li>
-                        <a class="nav-link" href="#">LOGOUT</a>
+                        <a class="nav-link" href="{% url 'logout' %}"><span style="color:white;">CIAO {{ user.username|upper|slice:":3" }}</span> - LOGOUT</a>
                     </li>
                     {% else %}
                     <li>
-                        <a class="nav-link" href="#">LOGIN</a>
+                        <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
                     </li>
                     {% endif %}
                 </ul>
