@@ -6,7 +6,6 @@ from django import forms
 from django.db.models.functions import Lower
 
 
-
 class Squadra(models.Model):
     nome_squadra = models.CharField(max_length=100)
     logo_squadra = models.ImageField(upload_to='loghi_squadre/', default='../static/images/shield.png', blank=True)
@@ -20,7 +19,7 @@ class Squadra(models.Model):
         ordering = [(Lower('nome_squadra'))] #importo lower in alto e lo inserisco qui, in modo che i calciatori con letter minuscole vadano in ordine alfabetico ugualmente
 
     def __str__(self):
-        return f'{self.logo_squadra} {self.nome_squadra}'
+        return f'{self.logo_squadra.url} {self.nome_squadra}'
 
     def get_absolute_url(self):
         """Returns the URL to access a particular instance of the model."""
