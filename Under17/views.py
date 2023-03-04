@@ -6,7 +6,9 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Squadra, Calciatore
+from .models import Squadra, Calciatore, Partita
+from django.utils import timezone
+from datetime import date, datetime
 
 class SquadraBaseView(View):
     model = Squadra
@@ -47,3 +49,30 @@ class CalciatoreUpdateView(CalciatoreBaseView, UpdateView):
 
 class CalciatoreDeleteView(CalciatoreBaseView, DeleteView):
     model = Calciatore
+
+class PartitaBaseView(View):
+    model = Partita
+    fields = '__all__'
+    success_url = reverse_lazy('Under17:partite_all')
+
+class PartitaListView(PartitaBaseView, ListView):
+    model = Partita
+
+    def get_context_data(self, **kwargs):
+       context_data = super().get_context_data(**kwargs)
+       context_data['dopo'] = Partita.objects.filter(data_partita__gte=timezone.now()).order_by('data_partita')
+       context_data['prima'] = Partita.objects.filter(data_partita__lte=timezone.now()).order_by('-data_partita')
+       return context_data
+
+class PartitaDetailView(PartitaBaseView, DetailView):
+    model = Partita
+
+class PartitaCreateView(PartitaBaseView, CreateView):
+    model = Partita
+
+class PartitaUpdateView(PartitaBaseView, UpdateView):
+    model = Partita
+
+class PartitaDeleteView(PartitaBaseView, DeleteView):
+    model = Partita
+

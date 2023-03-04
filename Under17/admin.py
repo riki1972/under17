@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Squadra, Calciatore
+from .models import Squadra, Calciatore, Partita
 from django.utils.html import format_html
 
 @admin.register(Calciatore)
@@ -32,3 +32,15 @@ class SquadraAdmin(admin.ModelAdmin):
     list_filter = ['nome_squadra']
     search_fields = ['nome_squadra']
     ordering = ['nome_squadra']
+
+@admin.register(Partita)
+class PartitaAdmin(admin.ModelAdmin):
+
+    def img_casa(self, obj):
+        return format_html('<div style="width:50px; height:40px; overflow: hidden;"><img src="{}" style="width:auto; height:40px;"/></div>'.format(obj.casa.logo_squadra.url))
+    
+    def img_trasferta(self, obj):
+        return format_html('<div style="width:50px; height:40px; overflow: hidden;"><img src="{}" style="width:auto; height:40px;"/></div>'.format(obj.trasferta.logo_squadra.url)) 
+    
+    ordering = ['giornata']
+    #list_display = ['img_casa', 'casa', 'trasferta', 'img_trasferta']

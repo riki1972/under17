@@ -1,0 +1,57 @@
+{% extends 'base_generic_section.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container-fluid"></div>
+<section id="content" class="container" style="padding: 3px;">
+    <br/><br/>
+    <h3>Partite Allievi Regionali U17 Girone D</h3>
+    <br><br>
+        <h4 class="partite-future">Partite da Giocare</h4>
+        {% for partita in dopo %}
+        <div class="partita-layout">
+            <div class="partita-layout-head">
+                <div class="logo-lnd-iniziale align-middle"><img src="{% static 'images/lnd.png' %}" alt="Bootstrap" width="32" height="32"></div>
+                <div><h4 class="data-ora-partita text-center align-middle"><span style="color:lightgrey;">{{ partita.giornata }}ª ∙ </span>{{ partita.data_partita }} <span style="color:lightgrey;"> ∙ ore {{ partita.ora_partita }}</span></h4></div>
+                <div class="logo-lnd-finale align-middle"><img src="{% static 'images/lnd.png' %}" alt="Bootstrap" width="32" height="32"></div>
+            </div>
+            <div class="partita-layout-body">
+                <a href="{% url 'Under17:partita_detail' partita.id %}" class="layout-info">
+                    <div class="layout-casa text-end align-middle">{{ partita.casa|capfirst }}</div> <!-- capfirst per rendere la prima lettera maiuscola -->
+                    <div class="layout-logo-casa"><img src="{{ partita.casa.logo_squadra.url }}"></div>
+                    <div class="layout-risultato">{{ partita.gol_casa }} ∙ {{ partita.gol_trasferta }}</div>
+                    <div class="layout-logo-trasferta"><img src="{{ partita.trasferta.logo_squadra.url }}"></div>
+                    <div class="layout-trasferta">{{ partita.trasferta|capfirst }}</div> <!-- capfirst per rendere la prima lettera maiuscola -->
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        <br><br>
+        <h4 class="partite-passate">Partite Giocate</h4>
+        {% for partita in prima %}
+        <div class="partita-layout">
+            <div class="partita-layout-head">
+                <div class="logo-lnd-iniziale align-middle"><img src="{% static 'images/lnd.png' %}" alt="Bootstrap" width="32" height="32"></div>
+                <div><h4 class="data-ora-partita text-center align-middle"><span style="color:lightgrey;">{{ partita.giornata }}ª ∙ </span>{{ partita.data_partita }} <span style="color:lightgrey;"> ∙ ore {{ partita.ora_partita }}</span></h4></div>
+                <div class="logo-lnd-finale align-middle"><img src="{% static 'images/lnd.png' %}" alt="Bootstrap" width="32" height="32"></div>
+            </div>
+            <div class="partita-layout-body">
+                <a href="{% url 'Under17:partita_detail' partita.id %}" class="layout-info">
+                    <div class="layout-casa text-end align-middle">{{ partita.casa|capfirst }}</div> <!-- capfirst per rendere la prima lettera maiuscola -->
+                    <div class="layout-logo-casa"><img src="{{ partita.casa.logo_squadra.url }}"></div>
+                    <div class="layout-risultato">{{ partita.gol_casa }} ∙ {{ partita.gol_trasferta }}</div>
+                    <div class="layout-logo-trasferta"><img src="{{ partita.trasferta.logo_squadra.url }}"></div>
+                    <div class="layout-trasferta">{{ partita.trasferta|capfirst }}</div> <!-- capfirst per rendere la prima lettera maiuscola -->
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        <br>
+        {% if user.is_authenticated %}
+        <a href="{% url 'Under17:partita_create' %}"><button class="btn btn-success">Inserisci nuova partita</button></a>
+        {% endif %}
+        <a href="{% url 'index' %}"><button type="button" class="btn btn-primary my-1">Torna alla Home</button></a>
+        <br/><br/>
+</section>
+
+{% endblock content %}

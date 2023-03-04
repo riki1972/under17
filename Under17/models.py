@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django import forms
 from django.db.models.functions import Lower
-
+from datetime import date, datetime
 
 class Squadra(models.Model):
     nome_squadra = models.CharField(max_length=100)
@@ -19,7 +19,7 @@ class Squadra(models.Model):
         ordering = [(Lower('nome_squadra'))] #importo lower in alto e lo inserisco qui, in modo che i calciatori con letter minuscole vadano in ordine alfabetico ugualmente
 
     def __str__(self):
-        return f'{self.logo_squadra.url} {self.nome_squadra}'
+        return f'{self.nome_squadra}'
 
     def get_absolute_url(self):
         """Returns the URL to access a particular instance of the model."""
@@ -64,3 +64,28 @@ class Calciatore(models.Model):
     def get_absolute_url(self):
         #Returns the URL to access a particular instance of the model.
         return reverse('Calciatore-detail-view', args=[str(self.id)])
+    
+class Partita(models.Model):
+    giornata = models.IntegerField(null=False, unique=True)
+    data_partita = models.DateField(null=False,blank=False, default=date.today)
+    ora_partita = models.TimeField(null=False,blank=False, default=datetime.now)
+    casa = models.ForeignKey('Squadra', related_name='casa', on_delete=models.DO_NOTHING)
+    trasferta = models.ForeignKey('Squadra', related_name='trasferta', on_delete=models.DO_NOTHING)
+    gol_casa = models.IntegerField(blank=True, default=0)
+    gol_trasferta = models.IntegerField(blank=True, default=0)
+
+    class Meta:
+        verbose_name = "Partita"
+        verbose_name_plural = "Partite"
+        # ordering = ['giornata']
+
+    def __str__(self):
+        return "{}ª {} {} - {} Vs {} : {} - {}".format(self.giornata, self.data_partita, self.ora_partita, self.casa, self.trasferta, self.gol_casa, self.gol_trasferta)
+        # return (f'{self.giornata}ª giornata - {self.casa} Vs {self.trasferta}')
+
+    def match(self):
+        return self.data_partita.strftime('%a %d %b %Y')
+    
+    def get_absolute_url(self):
+       """Returns the URL to access a particular instance of the model."""
+       return reverse('Partita-detail-view', args=[str(self.id)])

@@ -5,10 +5,10 @@
 
 <section id="content" class="container-fluid">
 
-    <h1 class="text-center align-middle foto"><img src="{% static 'images/foto_u17.jpg' %}" alt="Bootstrap" width="100%" height="auto" class="ombra"></h1>
+    <div class="text-center align-middle foto bg-image"></div>
     <br>
     <div class="testo-sotto-foto">
-        <h1 class="text-center align-middle"><img src="{% static 'images/desenzano.png' %}" alt="Bootstrap" width="70" height="70"></h1>
+        <div class="text-center align-middle"><br><img src="{% static 'images/desenzano.png' %}" alt="Bootstrap" width="130" height="130"><br><br></div>
         <h1 class="text-center">Allievi Under 17 Desenzano</h1>
         <h2 class="text-center text-danger">Campionato Regionale 2022/2023</h2>
     </div>
@@ -17,24 +17,24 @@
     <div class="container text-center selezione-scelta">
         <div class="row align-items-start">
             <div class="col col-6 col-lg-3">
-                <div class="p-2 d-flex justify-content-center text-center link-image"><a href=""><img src="{% static 'images/convocazioni8.png' %}" alt="Bootstrap" width="140" height="140"><br>CONVOCAZIONI</a></div>
+                <div class="p-2 d-flex justify-content-center text-center link-image"><a href=""><img src="{% static 'images/convocazioni8.png' %}" alt="Bootstrap" width="140" height="140"><br><br></a></div>
                 <h2>CONVOCAZIONI</h2>
                 <h3>Inserisci le convocazioni per la prossima partita<h3>
             </div>
             <div class="col col-6 col-lg-3">
-                <div class="p-2 d-flex justify-content-center text-center link-image"><a href=""><img src="{% static 'images/calendar8.png' %}" alt="Bootstrap" width="140" height="140"><br>CALENDARIO</a></div>
+                <div class="p-2 d-flex justify-content-center text-center link-image"><a href=""><img src="{% static 'images/calendar8.png' %}" alt="Bootstrap" width="140" height="140"><br><br></a></div>
                 <h2>CALENDARIO</h2>
-                <h3>Guarda il calendario degli Allievi Regionali Under 17<h3>
+                <h3>Il calendario degli Allievi Regionali Under 17<h3>
             </div>
             <div class="col col-6 col-lg-3">
-                <div class="p-2 d-flex justify-content-center text-center link-image"><a href="{% url 'Under17:calciatori_all' %}"><img src="{% static 'images/players8.png' %}" alt="Bootstrap" width="140" height="140"><br>CALCIATORI</a></div>
+                <div class="p-2 d-flex justify-content-center text-center link-image"><a href="{% url 'Under17:calciatori_all' %}"><img src="{% static 'images/players8.png' %}" alt="Bootstrap" width="140" height="140"><br><br></a></div>
                 <h2>CALCIATORI</h2>
-                <h3>Guarda la rosa della squadra degli Allievi Under 17<h3>
+                <h3>La rosa della squadra Allievi Regionali Under 17<h3>
             </div>
             <div class="col col-6 col-lg-3">
-                <div class="p-2 d-flex justify-content-center text-center link-image"><a href="{% url 'Under17:calciatori_all' %}"><img src="{% static 'images/badge8.png' %}" alt="Bootstrap" width="140" height="140"><br>CALCIATORI</a></div>
+                <div class="p-2 d-flex justify-content-center text-center link-image"><a href="{% url 'Under17:squadre_all' %}"><img src="{% static 'images/badge8.png' %}" alt="Bootstrap" width="140" height="140"><br><br></a></div>
                 <h2>SQUADRE</h2>
-                <h3>Guarda le squadre del Regionale Girone D Under 17<h3>
+                <h3>Le squadre del Girone D Allievi Regionali Under 17<h3>
             </div>
         </div>
     </div>
@@ -42,19 +42,19 @@
     <div class="container text-center selezione-scelta">
         <div class="row align-items-start">
             <div class="col col-12 col-lg-4">
-                <div class="p-2 d-flex justify-content-center text-center link-image"><a href=""><img src="{% static 'images/calendar8.png' %}" alt="Bootstrap" width="140" height="140"><br>CALENDARIO</a></div>
+                <div class="p-2 d-flex justify-content-center text-center link-image"><a href=""><img src="{% static 'images/calendar8.png' %}" alt="Bootstrap" width="140" height="140"><br><br></a></div>
                 <h2>CALENDARIO</h2>
-                <h3>Guarda il calendario degli Allievi Regionali Under 17<h3>
+                <h3>Il calendario degli Allievi Regionali Under 17<h3>
             </div>
             <div class="col col-12 col-lg-4">
-                <div class="p-2 d-flex justify-content-center text-center link-image"><a href="{% url 'Under17:calciatori_all' %}"><img src="{% static 'images/players8.png' %}" alt="Bootstrap" width="140" height="140"><br>CALCIATORI</a></div>
+                <div class="p-2 d-flex justify-content-center text-center link-image"><a href="{% url 'Under17:calciatori_all' %}"><img src="{% static 'images/players8.png' %}" alt="Bootstrap" width="140" height="140"><br><br></a></div>
                 <h2>CALCIATORI</h2>
-                <h3>Guarda la rosa della squadra degli Allievi Under 17<h3>
+                <h3>La rosa della squadra Allievi Regionali Under 17<h3>
             </div>
             <div class="col col-12 col-lg-4">
-                <div class="p-2 d-flex justify-content-center text-center link-image"><a href="{% url 'Under17:squadre_all' %}"><img src="{% static 'images/badge8.png' %}" alt="Bootstrap" width="140" height="140"><br>SQUADRE DEL GIRONE</a></div>
+                <div class="p-2 d-flex justify-content-center text-center link-image"><a href="{% url 'Under17:squadre_all' %}"><img src="{% static 'images/badge8.png' %}" alt="Bootstrap" width="140" height="140"><br><br></a></div>
                 <h2>SQUADRE</h2>
-                <h3>Guarda le squadre del Regionale Girone D Under 17<h3>
+                <h3>Le squadre del Girone D Allievi Regionali Under 17<h3>
             </div>
         </div>
     </div>

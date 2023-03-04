@@ -1,0 +1,30 @@
+{% extends 'base_generic_section.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+<div class="container-fluid"></div>
+<section id="content" class="container">
+    <br/><br/>
+    <h3 class="text-danger">ELIMINA PARTITA</h3>
+    
+            <div class="container">
+                <div class="row my-5">
+                    <div class="col-md-12">
+                        <form method="post" class="form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            <h3>Sei sicuro di voler eliminare la partita <b>{{ partita.casa|capfirst }} vs {{ partita.trasferta|capfirst }}</b>?
+                            <br><br>
+                            <button type="submit" class="btn btn-danger">Elimina</button>
+                            <a href="{% url 'Under17:partite_all' %}"><button type="button" class="btn btn-warning">Annulla</button></a>
+                            </h3>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    
+    <br/><br/>
+</section>
+
+{% endblock content %}
